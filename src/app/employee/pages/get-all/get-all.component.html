@@ -1,0 +1,76 @@
+<h2>Todos Empleados</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="buscar()">
+            <button class="btn btn-dark">Listar Empleados</button>
+        </form>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="hayError"
+    class="alert alert-danger">
+    Vuelve a intentarlo, el servidor tiene demasidas peticiones
+</div>
+
+
+<div *ngIf="employees.length > 0" class="row">
+    <div class="col p-2 bd-highlight">
+        <!-- <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Salario</th>
+                    <th>Edad</th>
+                    <th>Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr *ngFor="let dat of employees;">
+                    <td>{{dat.id}}</td>
+                    <td>{{dat.employee_name}}</td>
+                    <td>{{dat.employee_salary}}</td>
+                    <td>{{dat.employee_age}}</td>
+                    <td>
+                        <ng-container *ngIf="dat.employee_age >= 30 ; else elseTemplate">
+                            <img class="small-flag" src='https://images.unsplash.com/photo-1552641156-93ea2a5f78e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by'>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                            <img class="small-flag" src='https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG9'>
+                        </ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table> -->
+
+        <tr *ngFor="let dat of employees;">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    
+                    <h5 class="card-title">{{dat.employee_name}}</h5>
+                <div class="col-md-4">
+                    <ng-container *ngIf="dat.employee_age >= 30 ; else elseTemplate">
+                        <img class="small-flag rounded-circle" src='https://images.unsplash.com/photo-1552641156-93ea2a5f78e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by'>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <img class="small-flag rounded-circle" src='https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG9'>
+                    </ng-template>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                    <p class="card-text">Salario: {{dat.employee_salary}}</p>
+                    <p class="card-text">Edad: {{dat.employee_age}}</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </tr>
+
+
+    </div>
+</div>

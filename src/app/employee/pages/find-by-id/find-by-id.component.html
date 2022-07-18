@@ -1,0 +1,53 @@
+<h2>Por Empleado Id</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="buscar()" autocomplete="off">
+            <input type="text"
+                    name="termino"
+                    class="form-control"
+                    [(ngModel)]="termino"
+                    placeholder="Buscar Empleado Por Id..."/>
+        </form>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="hayError"
+    class="alert alert-danger">
+    El empleado con Id: {{termino}} no se pudo encontrar, intente nuevamente, el servidor puede tener demasiadas peticiones
+</div>
+
+<div *ngIf="employee" class="row">
+    <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Empleado</th>
+                </tr>
+            </thead>
+
+            
+            <tr>
+
+                <div class="card mx-auto d-block" style="width: 18rem;">
+                    <ng-container *ngIf="aux[3].employee_age >= 30 ; else elseTemplate">
+                        <img class="small-flag rounded-circle mx-auto d-block" src='https://images.unsplash.com/photo-1552641156-93ea2a5f78e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by'>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <img class="small-flag rounded-circle mx-auto d-block" src='https://images.unsplash.com/photo-1535295972055-1c762f4483e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG9'>
+                    </ng-template>
+                    <div class="card-body">
+                        <h5 class="card-title">Id: {{aux[0]}}</h5>
+                        <h5 class="card-title">Nombre: {{aux[1]}}</h5>
+                        <h5 class="card-title">Salario: {{aux[2]}}</h5>
+                        <h5 class="card-title">Edad: {{aux[3]}}</h5>
+                    </div>
+                  </div>
+
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<h2>Busquedas</h2>
+        <hr>
+        <ul class="list-group">
+            <li  
+                routerLink=""
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true}"
+                class="list-group-item">Listar empleados</li>
+            <li  
+                routerLink="employee/:id"
+                routerLinkActive="active"
+                class="list-group-item">Buscar Por Id</li>
+            <li 
+                routerLink="employee/update/:id"
+                routerLinkActive="active"
+                class="list-group-item">Actualizar por Id</li>
+        </ul>
